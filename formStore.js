@@ -14,9 +14,15 @@ function onSubmit(e){
         alert('Please enter all fields');
     }
     else{
-        localStorage.setItem('Name',nameInput.value);
-        localStorage.setItem('Email',emailInput.value);
+        var user = {
+            name: nameInput.value,
+            email: emailInput.value
+        }
+        var StoredUser = JSON.stringify(user);
+        localStorage.setItem('UserDetails',StoredUser);
     }
-    //nameInput.value='';
-    //emailInput.value='';
+
+    nameInput.value='';
+    emailInput.value='';
+    
 }
