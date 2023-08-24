@@ -14,12 +14,22 @@ function onSubmit(e){
         alert('Please enter all fields');
     }
     else{
-        var user = {
+        var newUser = {
             name: nameInput.value,
             email: emailInput.value
         }
-        var StoredUser = JSON.stringify(user);
-        localStorage.setItem('UserDetails',StoredUser);
+        var storedUsers = localStorage.getItem('UserDetails');
+        var users = [];
+
+        if (storedUsers) {
+            users = JSON.parse(storedUsers);
+        }
+
+        // Add the new user to the array
+        users.push(newUser);
+
+        // Store the updated user array back to local storage
+        localStorage.setItem('UserDetails', JSON.stringify(users));
     }
 
     nameInput.value='';
