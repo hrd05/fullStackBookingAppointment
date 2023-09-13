@@ -10,7 +10,7 @@
         email 
     }
    // localStorage.setItem(email, JSON.stringify(userDetails));
-   axios.post("https://crudcrud.com/api/1e63f4158a234ffe934fca13e6497982/appointmentData", userDetails)
+   axios.post("https://crudcrud.com/api/46b5ba2ee8314b36870369c86d1d5707/appointmentData", userDetails)
    .then((res)=>{
     showUserOnScreen(res.data)
     console.log(res);
@@ -20,7 +20,7 @@
  }
 
  window.addEventListener("DOMContentLoaded",()=>{
-    axios.get("https://crudcrud.com/api/1e63f4158a234ffe934fca13e6497982/appointmentData")
+    axios.get("https://crudcrud.com/api/46b5ba2ee8314b36870369c86d1d5707/appointmentData")
     .then((res)=>{
         for(var i=0;i<res.data.length;i++)
         {
@@ -51,24 +51,33 @@
     parentElement.appendChild(childElement);
 
      //del btn functionality
-     delbtn.onclick = () => {
-        const userId = userDetails._id; // Assuming _id is the identifier for the user
-        axios.delete(`https://crudcrud.com/api/1e63f4158a234ffe934fca13e6497982/appointmentData/${userId}`)
-        .then(res => {
-            console.log(res.data);
-            // Remove the DOM element after a successful delete
+    delbtn.onclick = () => {
+    const userId = userDetails._id; 
+    axios.delete(`https://crudcrud.com/api/46b5ba2ee8314b36870369c86d1d5707/appointmentData/${userId}`)
+    .then(res => {
+        console.log(res.data);
+        
+        parentElement.removeChild(childElement);
+    })
+    .catch(error => {
+        console.error('Error deleting user detail:', error);
+      
+    });
+}
+
+    
+    editBtn.onclick = () => {
+        //localStorage.removeItem(userDetails.description);
+        const userId = userDetails._id;
+        axios.delete(`https://crudcrud.com/api/46b5ba2ee8314b36870369c86d1d5707/appointmentData/${userId}`)
+        .then(res => {           
             parentElement.removeChild(childElement);
         })
         .catch(error => {
             console.error('Error deleting user detail:', error);
-            // Handle the error here, e.g., display an error message to the user
+          
         });
-    }
-    
-    
-    editBtn.onclick = () => {
-        //localStorage.removeItem(userDetails.description);
-        parentElement.removeChild(childElement);
+
         document.getElementById('name').value = userDetails.name;
         document.getElementById('email').value = userDetails.email;
         
