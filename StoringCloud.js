@@ -19,6 +19,17 @@
     //showUserOnScreen(userDetails)
  }
 
+ window.addEventListener("DOMContentLoaded",()=>{
+    axios.get("https://crudcrud.com/api/1e63f4158a234ffe934fca13e6497982/appointmentData")
+    .then((res)=>{
+        for(var i=0;i<res.data.length;i++)
+        {
+            showUserOnScreen(res.data[i]);
+        }
+    })
+    .catch(err=>console.log(err));
+ })
+
  function showUserOnScreen(userDetails){
     const parentElement = document.getElementById('users');
 
