@@ -52,9 +52,19 @@
 
      //del btn functionality
      delbtn.onclick = () => {
-        //localStorage.removeItem(userDetails.description);
-        parentElement.removeChild(childElement);
+        const userId = userDetails._id; // Assuming _id is the identifier for the user
+        axios.delete(`https://crudcrud.com/api/1e63f4158a234ffe934fca13e6497982/appointmentData/${userId}`)
+        .then(res => {
+            console.log(res.data);
+            // Remove the DOM element after a successful delete
+            parentElement.removeChild(childElement);
+        })
+        .catch(error => {
+            console.error('Error deleting user detail:', error);
+            // Handle the error here, e.g., display an error message to the user
+        });
     }
+    
     
     editBtn.onclick = () => {
         //localStorage.removeItem(userDetails.description);
