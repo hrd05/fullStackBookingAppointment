@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Booking Appointment App</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Include your custom CSS for minimal design -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="bg-dark text-white text-center py-3">
+        <h1>Booking Appointment</h1>
+    </header>
+
+    <section class="container my-4">
+        <form  onsubmit="saveToDb(event)" action="/form/users" method="POST" id="my-form">
+            <h2 class="mb-3">Add User</h2>
+            <div class="alert alert-danger msg" style="display: none;"></div>
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number:</label>
+                <input type="tel" id="phone"  name="phone" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email"  name="email" class="form-control" required>
+            </div>
+            <div>
+                <input type="hidden" value="User.id" name="userid">
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+
+        <ul id="users" class="list-group mt-4"></ul>
+
+        <ul class="items list-unstyled">
+            <!-- <li class="item">Item 1</li>
+            <li class="item">Item 2</li>
+            <li class="item">Item 3</li> -->
+        </ul>
+    </section>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.5.0/axios.min.js"></script>
+    <script src ="/javascript/usersData.js" ></script>
+</body>
+</html>
